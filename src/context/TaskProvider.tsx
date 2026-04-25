@@ -1,16 +1,21 @@
 // src/context/TaskProvider.tsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { TaskContext } from "./TaskContext";
 import type { Task } from "../types/Task";
 
 export const TaskProvider = ({ children }: { children: React.ReactNode }) => {
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const [tasks, setTasks] = useState<Task[]>(() => {
+    const stored = localStorage.getItem("tasks");
+    return stored ? JSON.parse(stored) : [];
+  });
+
+  // Persist tasks whenever they change
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   const addTask = (task: Omit<Task, "id">) => {
-    const newTask: Task = {
-      ...task,
-      id: Date.now(), // numeric ID
-    };
+    const newTask: Task = { ...task, id: Date.now() };
     setTasks((prev) => [...prev, newTask]);
   };
 

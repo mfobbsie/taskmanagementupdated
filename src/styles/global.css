@@ -22,6 +22,16 @@
   --mono: "Sour Gummy", ui-monospace, monospace;
 
   --transition: 0.25s ease;
+
+  --button-text-contrast: #ffffff;
+
+  --accent-bg: #6b5f4a33; 
+  --accent-border: #6b5f4a;
+}
+
+[data-theme="light"] button:hover,
+[data-theme="light"] button.selected {
+  color: var(--button-text-contrast);
 }
 
 /* ----------------------------------------
@@ -64,6 +74,15 @@ p, label, input, textarea, select, button {
 button {
   cursor: pointer;
   transition: background var(--transition), color var(--transition);
+  color: var(--text-h);
+}
+
+button:not(.save-btn):not(.delete-btn) {
+  color: var(--text);
+}
+
+button:hover {
+  opacity: 0.8;
 }
 
 input, textarea, select {
@@ -75,14 +94,10 @@ input, textarea, select {
   transition: background var(--transition), color var(--transition), border var(--transition);
 }
 
-button {
-  color: var(--text-h);
-}
-
-button:not(.save-btn):not(.delete-btn) {
+::placeholder {
   color: var(--text);
+  opacity: 0.5;
 }
-
 
 .card {
   background: var(--card-bg);
@@ -91,4 +106,26 @@ button:not(.save-btn):not(.delete-btn) {
   padding: 1.5rem;
   box-shadow: var(--shadow);
   transition: background var(--transition), border var(--transition), box-shadow var(--transition);
+  opacity: 0;
+  transform: translateY(6px);
+  animation: cardEnter 0.4s ease forwards;
+}
+
+@keyframes cardEnter {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+}
+
+[data-theme="light"] .task-form button:hover,
+[data-theme="light"] .task-item button:hover,
+[data-theme="light"] .dashboard button:hover,
+[data-theme="light"] .choice.selected,
+[data-theme="light"] .choice:hover {
+  color: #ffffff !important;
 }

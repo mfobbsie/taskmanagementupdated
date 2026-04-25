@@ -6,11 +6,13 @@ import { useTasks } from "../hooks/useTasks";
 import type { Task } from "../types/Task";
 import EisenhowerMatrix from "../components/EisenhowerMatrix";
 import "../styles/Dashboard.css";
+import { useToast } from "../components/ToastProvider";
 
 type SortOption = "none" | "dueDate" | "priority";
 
 export default function Dashboard() {
   const { tasks, addTask, toggleTaskCompleted } = useTasks();
+  const { showToast } = useToast();
   const navigate = useNavigate();
 
   const [view, setView] = useState<"list" | "matrix">("list");
@@ -78,6 +80,7 @@ export default function Dashboard() {
     }
 
     addTask(newTask);
+    showToast("Task added!", "success");
 
     setNewTask({
       title: "",
@@ -121,10 +124,9 @@ export default function Dashboard() {
         <button
           onClick={() => {
             const current = document.documentElement.getAttribute("data-theme");
-            document.documentElement.setAttribute(
-              "data-theme",
-              current === "dark" ? "light" : "dark",
-            );
+            const next = current === "dark" ? "light" : "dark";
+            document.documentElement.setAttribute("data-theme", next);
+            showToast(`Switched to ${next} mode`, "info");
           }}
         >
           Toggle Theme
@@ -260,7 +262,20 @@ export default function Dashboard() {
         <label>Sort tasks by</label>
         <select
           value={sortBy}
-          onChange={(e) => setSortBy(e.target.value as SortOption)}
+          onChange={(e) => {
+            const value = e.target.value as SortOption;
+            setSortBy(value);
+            showToast(
+              `Sorted by ${
+                value === "none"
+                  ? "Newest Added"
+                  : value === "dueDate"
+                    ? "Due Date"
+                    : "Priority"
+              }`,
+              "info",
+            );
+          }}
         >
           <option value="none">Newest Added</option>
           <option value="dueDate">Due Date</option>
@@ -299,7 +314,15 @@ export default function Dashboard() {
                 <input
                   type="checkbox"
                   checked={task.completed}
-                  onChange={() => toggleTaskCompleted(task.id)}
+                  onChange={() => {
+                    toggleTaskCompleted(task.id);
+                    showToast(
+                      task.completed
+                        ? "Task marked incomplete"
+                        : "Task completed!",
+                      "success",
+                    );
+                  }}
                 />
                 Mark completed
               </label>

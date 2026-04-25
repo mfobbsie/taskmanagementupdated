@@ -1,0 +1,35 @@
+.toast-container {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  display: grid;
+  gap: 0.6rem;
+  z-index: 9999;
+}
+
+.toast {
+  padding: 0.8rem 1.2rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  background: var(--card-bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  opacity: 0;
+  animation: fadeInOut 3s forwards;
+}
+
+.toast.success {
+  border-color: #4caf50;
+}
+
+.toast.error {
+  border-color: #d9534f;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(10px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(10px); }
+}
