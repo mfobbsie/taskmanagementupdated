@@ -1,15 +1,23 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
-import { BrowserRouter } from "react-router-dom";
-import { TaskProvider } from "./context/TaskProvider";
+// src/main.tsx
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import "./styles/index.css";
+import { TaskProvider } from "./context/TaskProvider";
+import { AppRoutes } from "./router/AppRoutes";
+import { Auth0ProviderWithNavigate } from "./auth/Auth0ProviderWithNavigate";
+
+const root = document.getElementById("root")!;
+
+createRoot(root).render(
+  <StrictMode>
     <BrowserRouter>
-      <TaskProvider>
-        <App />
-      </TaskProvider>
+      <Auth0ProviderWithNavigate>
+        <TaskProvider>
+          <AppRoutes />
+        </TaskProvider>
+      </Auth0ProviderWithNavigate>
     </BrowserRouter>
-  </React.StrictMode>,
+  </StrictMode>,
 );
