@@ -1,6 +1,6 @@
 // src/pages/Landing.tsx
 
-import "./Landing.css";
+import "../styles/Landing.css";
 import { useAuth0 } from "@auth0/auth0-react";
 
 export default function Landing() {
