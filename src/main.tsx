@@ -3,7 +3,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import "./styles/index.css";
+import "./styles/global.css";
 import { TaskProvider } from "./context/TaskProvider";
 import { AppRoutes } from "./router/AppRoutes";
 import { Auth0ProviderWithNavigate } from "./auth/Auth0ProviderWithNavigate";

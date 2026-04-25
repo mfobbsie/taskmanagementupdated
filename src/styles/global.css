@@ -1,0 +1,94 @@
+/* ----------------------------------------
+   FONTS (modern set — no script font)
+---------------------------------------- */
+
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600&family=Inter:wght@300;400;500;600&family=Sour+Gummy:wght@400;500&display=swap");
+
+/* ----------------------------------------
+   LIGHT THEME (default)
+---------------------------------------- */
+
+:root {
+  --bg: #f5f0e4;
+  --text: #2a2623;
+  --text-h: #1c1917;
+  --card-bg: #ffffff;
+  --border: #d8d3cc;
+  --accent: #6b5f4a;
+  --shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+
+  --sans: "Inter", system-ui, sans-serif;
+  --display: "Lexend", system-ui, sans-serif;
+  --mono: "Sour Gummy", ui-monospace, monospace;
+
+  --transition: 0.25s ease;
+}
+
+/* ----------------------------------------
+   DARK THEME
+---------------------------------------- */
+
+[data-theme="dark"] {
+  --bg: #211a07;
+  --text: #f5f0e4;
+  --text-h: #ffffff;
+  --card-bg: #2b230f;
+  --border: #3a3018;
+  --accent: #c2a878;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* ----------------------------------------
+   BASE ELEMENTS
+---------------------------------------- */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  transition: background var(--transition), color var(--transition);
+}
+
+h1, h2, h3 {
+  font-family: var(--display);
+  color: var(--text-h);
+  margin: 0;
+}
+
+p, label, input, textarea, select, button {
+  font-family: var(--sans);
+}
+
+button {
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+}
+
+input, textarea, select {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 0.6rem;
+  transition: background var(--transition), color var(--transition), border var(--transition);
+}
+
+button {
+  color: var(--text-h);
+}
+
+button:not(.save-btn):not(.delete-btn) {
+  color: var(--text);
+}
+
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  transition: background var(--transition), border var(--transition), box-shadow var(--transition);
+}
