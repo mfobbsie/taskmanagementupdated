@@ -1,0 +1,42 @@
+/* Container */
+.focus-timer {
+  margin-top: 24px;
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--card-bg);
+  box-shadow: var(--shadow);
+  max-width: 260px;
+}
+
+/* Title */
+.focus-timer-title {
+  margin-bottom: 8px;
+  color: var(--text-h);
+}
+
+/* Timer display */
+.focus-timer-display {
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 12px;
+  color: var(--text-h); /* fixes dark-mode readability */
+}
+
+/* Timer buttons */
+.focus-timer-btn {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--card-bg); /* white in light mode, dark card in dark mode */
+  color: var(--text);         /* dark text in light mode, light text in dark mode */
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.focus-timer-btn:hover {
+  background: var(--accent);
+  color: #ffffff; /* white text on accent */
+}

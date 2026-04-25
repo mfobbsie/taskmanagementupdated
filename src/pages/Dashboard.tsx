@@ -133,12 +133,6 @@ export default function Dashboard() {
         </button>
       </div>
 
-      {/* View Toggle */}
-      <div className="view-toggle">
-        <button onClick={() => setView("list")}>List View</button>
-        <button onClick={() => setView("matrix")}>Eisenhower Matrix</button>
-      </div>
-
       {/* Feeling Prompt */}
       <div className="dashboard-panel">
         <h3>How are you feeling today?</h3>
@@ -256,6 +250,12 @@ export default function Dashboard() {
       </div>
 
       <div className="section-divider" />
+
+      {/* View Toggle */}
+      <div className="view-toggle">
+        <button onClick={() => setView("list")}>List View</button>
+        <button onClick={() => setView("matrix")}>Eisenhower Matrix</button>
+      </div>
 
       {/* Sort Dropdown */}
       <div className="task-list-header">

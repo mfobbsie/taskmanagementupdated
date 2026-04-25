@@ -1,6 +1,7 @@
 // src/components/FocusTimer.tsx
 
 import { useEffect, useState } from "react";
+import "../styles/FocusTimer.css";
 
 interface FocusTimerProps {
   taskTitle?: string;
@@ -42,37 +43,21 @@ export default function FocusTimer({ taskTitle }: FocusTimerProps) {
   };
 
   return (
-    <div
-      style={{
-        marginTop: 24,
-        padding: 16,
-        borderRadius: 12,
-        background: "var(--card-bg)",
-        boxShadow: "var(--shadow)",
-        maxWidth: 260,
-      }}
-    >
-      <h3 style={{ marginBottom: 8 }}>
-        {taskTitle ? `Focus on: ${taskTitle}` : "3-Minute Focus Timer"}
+    <div className="focus-timer">
+      <h3 className="focus-timer-title">
+        {taskTitle ? `Focus on: ${taskTitle}` : "3‑Minute Focus Timer"}
       </h3>
 
-      <div
-        style={{
-          fontSize: "2rem",
-          fontWeight: 600,
-          textAlign: "center",
-          marginBottom: 12,
-        }}
-      >
+      <div className="focus-timer-display">
         {minutes}:{seconds.toString().padStart(2, "0")}
       </div>
 
       {!isRunning ? (
-        <button onClick={start} style={{ width: "100%" }}>
-          Start 3-Minute Timer
+        <button className="focus-timer-btn" onClick={start}>
+          Start 3‑Minute Timer
         </button>
       ) : (
-        <button onClick={reset} style={{ width: "100%" }}>
+        <button className="focus-timer-btn" onClick={reset}>
           Reset
         </button>
       )}

@@ -14,7 +14,7 @@
   --text-h: #1c1917;
   --card-bg: #ffffff;
   --border: #d8d3cc;
-  --accent: #6b5f4a;
+  --accent: #c98c4c;
   --shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 
   --sans: "Inter", system-ui, sans-serif;
@@ -25,8 +25,8 @@
 
   --button-text-contrast: #ffffff;
 
-  --accent-bg: #6b5f4a33; 
-  --accent-border: #6b5f4a;
+  --accent-bg: #e7b17a; 
+  --accent-border: #b6641f;
 }
 
 [data-theme="light"] button:hover,
@@ -122,10 +122,42 @@ input, textarea, select {
   box-shadow: 0 4px 10px rgba(0,0,0,0.12);
 }
 
+a {
+  color: #8a5a2a; /* soft redwood brown */
+  text-decoration: none;
+}
+
+a:hover {
+  color: #b6641f; /* deeper golden-orange */
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #6b4a28; /* deeper warm brown */
+}
+
+[data-theme="dark"] a {
+  color: #e7b17a; /* warm golden glow */
+}
+
+[data-theme="dark"] a:hover {
+  color: #f5d6a1; /* lighter golden highlight */
+  text-decoration: underline;
+}
+
+[data-theme="dark"] a:visited {
+  color: #d9a06a; /* slightly deeper golden tone */
+}
+
+
 [data-theme="light"] .task-form button:hover,
 [data-theme="light"] .task-item button:hover,
 [data-theme="light"] .dashboard button:hover,
 [data-theme="light"] .choice.selected,
 [data-theme="light"] .choice:hover {
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .landing-content button:hover {
   color: #ffffff !important;
 }
