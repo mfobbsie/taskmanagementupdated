@@ -15,6 +15,10 @@ export default function Dashboard() {
   const { showToast } = useToast();
   const navigate = useNavigate();
 
+  const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSortBy(e.target.value as SortOption);
+  };
+
   const [view, setView] = useState<"list" | "matrix">("list");
   const [sortBy, setSortBy] = useState<SortOption>("none");
 
@@ -169,8 +173,9 @@ export default function Dashboard() {
       {/* Add Task Form */}
       <div className="task-form">
         <div className="form-group">
-          <label>Task Title</label>
+          <label htmlFor="title">Task Title</label>
           <input
+            id="title"
             name="title"
             value={newTask.title}
             onChange={handleInputChange}
@@ -178,8 +183,9 @@ export default function Dashboard() {
         </div>
 
         <div className="form-group">
-          <label>Description</label>
+          <label htmlFor="description">Description</label>
           <textarea
+            id="description"
             name="description"
             value={newTask.description}
             onChange={handleInputChange}
@@ -187,8 +193,9 @@ export default function Dashboard() {
         </div>
 
         <div className="form-group">
-          <label>Due Date</label>
+          <label htmlFor="dueDate">Due Date</label>
           <input
+            id="dueDate"
             type="date"
             name="dueDate"
             value={newTask.dueDate}
@@ -197,8 +204,9 @@ export default function Dashboard() {
         </div>
 
         <div className="form-group">
-          <label>Priority</label>
+          <label htmlFor="priority">Priority</label>
           <select
+            id="priority"
             name="priority"
             value={newTask.priority}
             onChange={handleInputChange}
@@ -210,8 +218,9 @@ export default function Dashboard() {
         </div>
 
         <div className="form-group">
-          <label>Urgency</label>
+          <label htmlFor="urgency">Urgency</label>
           <select
+            id="urgency"
             name="urgency"
             value={newTask.urgency}
             onChange={handleInputChange}
@@ -222,8 +231,9 @@ export default function Dashboard() {
         </div>
 
         <div className="form-group">
-          <label>Importance</label>
+          <label htmlFor="importance">Importance</label>
           <select
+            id="importance"
             name="importance"
             value={newTask.importance}
             onChange={handleInputChange}
@@ -234,8 +244,9 @@ export default function Dashboard() {
         </div>
 
         <div className="form-group">
-          <label>Energy Level</label>
+          <label htmlFor="energyLevel">Energy Level</label>
           <select
+            id="energyLevel"
             name="energyLevel"
             value={newTask.energyLevel}
             onChange={handleInputChange}
@@ -259,24 +270,8 @@ export default function Dashboard() {
 
       {/* Sort Dropdown */}
       <div className="task-list-header">
-        <label>Sort tasks by</label>
-        <select
-          value={sortBy}
-          onChange={(e) => {
-            const value = e.target.value as SortOption;
-            setSortBy(value);
-            showToast(
-              `Sorted by ${
-                value === "none"
-                  ? "Newest Added"
-                  : value === "dueDate"
-                    ? "Due Date"
-                    : "Priority"
-              }`,
-              "info",
-            );
-          }}
-        >
+        <label htmlFor="sortBy">Sort tasks by</label>
+        <select id="sortBy" value={sortBy} onChange={handleSortChange}>
           <option value="none">Newest Added</option>
           <option value="dueDate">Due Date</option>
           <option value="priority">Priority</option>
